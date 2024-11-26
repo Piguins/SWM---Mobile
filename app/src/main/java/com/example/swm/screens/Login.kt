@@ -1,3 +1,4 @@
+package com.example.swm.screens
 import androidx.compose.runtime.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -10,8 +11,13 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.text.font.*
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.layout.*
+import com.example.swm.constants.MyColors
+import com.example.swm.constants.MyFontSize
+import com.example.swm.constants.MyImages
 import com.skydoves.landscapist.*
-import com.skydoves.landscapist.coil3.*
+import com.skydoves.landscapist.coil.CoilImage
+
+
 @Composable
 fun Login() {
 	Column(

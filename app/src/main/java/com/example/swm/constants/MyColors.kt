@@ -1,3 +1,4 @@
+package com.example.swm.constants
 import androidx.compose.ui.graphics.Color
 public class MyColors {
 	companion object {

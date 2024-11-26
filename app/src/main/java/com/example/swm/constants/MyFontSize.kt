@@ -1,3 +1,4 @@
+package com.example.swm.constants
 import androidx.compose.ui.unit.*
 public class MyFontSize {
 	companion object {

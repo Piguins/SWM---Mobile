@@ -1,3 +1,5 @@
+package com.example.swm.constants
+
 import androidx.compose.ui.unit.*
 public class MyImages {
 	companion object {

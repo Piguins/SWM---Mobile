@@ -1,3 +1,5 @@
+package com.example.swm.constants
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
