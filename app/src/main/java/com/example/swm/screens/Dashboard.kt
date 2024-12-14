@@ -637,4 +637,72 @@ fun 2_Dashboard-HàNgTrongKho() {
 			}
 		}
 	}
+    	OutlinedButton(
+					onClick = { println("Pressed!") },
+					border = BorderStroke(0.dp, Color.Transparent),
+					colors = ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Transparent),
+					contentPadding = PaddingValues(),
+					modifier = Modifier
+						.border(
+							width = 1.dp,
+							color = Color(0xFFC2BFBF),
+							shape = RoundedCornerShape(80.dp)
+						)
+						.clip(shape = RoundedCornerShape(80.dp))
+						.width(91.dp)
+				){
+					Column(
+						horizontalAlignment = Alignment.CenterHorizontally,
+						modifier = Modifier
+							.padding(vertical = 11.dp,)
+					){
+						Text("Hàng trong kho",
+							color = Color(0xFF000000),
+							fontSize = 10.sp,
+						)
+					}
+				}
+				OutlinedButton(
+					onClick = { println("Pressed!") },
+					border = BorderStroke(0.dp, Color.Transparent),
+					colors = ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Transparent),
+					contentPadding = PaddingValues(),
+					modifier = Modifier
+						.border(
+							width = 1.dp,
+							color = Color(0xFFC2BFBF),
+							shape = RoundedCornerShape(80.dp)
+						)
+						.clip(shape = RoundedCornerShape(80.dp))
+						.width(91.dp)
+				){
+					Column(
+						horizontalAlignment = Alignment.CenterHorizontally,
+						modifier = Modifier
+							.padding(vertical = 10.dp,)
+					){
+						Text("Vận chuyển",
+							color = Color(0xFF000000),
+							fontSize = 10.sp,
+						)
+					}
+				}
+				OutlinedButton(
+					onClick = { println("Pressed!") },
+					border = BorderStroke(0.dp, Color.Transparent),
+					colors = ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Transparent),
+					contentPadding = PaddingValues(),
+					modifier = Modifier
+						.clip(shape = RoundedCornerShape(80.dp))
+						.width(133.dp)
+						.background(
+							color = Color(0xFF4F75FF),
+							shape = RoundedCornerShape(80.dp)
+						)
+				){
+					Column(
+						horizontalAlignment = Alignment.CenterHorizontally,
+						modifier = Modifier
+							.padding(vertical = 9.dp,)
+					){
 }
