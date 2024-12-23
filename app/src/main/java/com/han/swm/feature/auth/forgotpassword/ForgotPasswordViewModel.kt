@@ -1,10 +1,9 @@
-package com.han.swm.feature.forgotpassword
+package com.han.swm.feature.auth.forgotpassword
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.navigation.toRoute
-import com.han.swm.feature.forgotpassword.navigation.ForgotPasswordRoute
-import com.han.swm.feature.forgotpassword.navigation.emailArg
+import com.han.swm.feature.auth.forgotpassword.navigation.ForgotPasswordRoute
 
 class ForgotPasswordViewModel(
     savedStateHandle: SavedStateHandle,

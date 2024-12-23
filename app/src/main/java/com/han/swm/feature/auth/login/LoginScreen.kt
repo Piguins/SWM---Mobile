@@ -1,5 +1,6 @@
-package com.han.swm.feature.login
+package com.han.swm.feature.auth.login
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,10 +16,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,10 +30,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter.State.Empty.painter
@@ -37,16 +47,49 @@ import com.han.swm.R
 import com.han.swm.designsystem.TextBox
 import com.han.swm.ui.theme.DarkBlue
 import com.han.swm.ui.theme.SWMTheme
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreenRoute(
     viewModel: LoginScreenViewModel = viewModel(),
-    onGoToForgotPassword: (String) -> Unit
+    onGoToForgotPassword: (String) -> Unit,
+    onGoToDashBoard: () -> Unit,
 ) {
+    val lifecycle = LocalLifecycleOwner.current
+    val context = LocalContext.current
+
     LoginScreen(
         onForgotPassword = onGoToForgotPassword,
         onLogin = viewModel::onLogin
     )
+
+    LaunchedEffect(Unit) {
+        lifecycle.repeatOnLifecycle(
+            state = Lifecycle.State.STARTED
+        ) {
+            launch {
+                viewModel.event.collect { event ->
+                    when (event) {
+                        LoginEvent.SUCCESS -> {
+                            Toast.makeText(
+                                context,
+                                "Đăng nhập thành công",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            onGoToDashBoard()
+                        }
+                        LoginEvent.FAILED -> {
+                            Toast.makeText(
+                                context,
+                                "Email hoặc mật khẩu sai",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @Composable
@@ -79,7 +122,8 @@ private fun LoginScreen(
             title = stringResource(R.string.email_title),
             placeholder = "Example@gmail.com",
             value = email,
-            onValueChanged = { email = it }
+            onValueChanged = { email = it },
+            keyboardType = KeyboardType.Email
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -89,7 +133,8 @@ private fun LoginScreen(
             title = "Mật khẩu",
             placeholder = "Tối thiểu 8 ký tự",
             value = password,
-            onValueChanged = { password = it }
+            onValueChanged = { password = it },
+            keyboardType = KeyboardType.Password
         )
 
         Row(
@@ -130,5 +175,3 @@ private fun LoginScreenPreview(){
         }
     }
 }
-
-
