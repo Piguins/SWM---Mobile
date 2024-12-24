@@ -252,6 +252,4 @@ fun 5_2CậPNhậTThôNgTinTàIKhoảN() {
 					)
 				}
 			}
-		}
-	}
 }
