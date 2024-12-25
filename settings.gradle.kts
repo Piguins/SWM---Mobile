@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SWM"
 include(":app")
+ 
