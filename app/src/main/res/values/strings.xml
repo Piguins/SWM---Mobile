@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SWM</string>
+    <string name="welcome_text">Chào mừng trở lại</string>
+    <string name="email_title">Email</string>
 </resources>
