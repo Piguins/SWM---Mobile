@@ -2,7 +2,7 @@ package com.han.swm.common
 
 enum class SWMMenu {
     Home,
-    Product,
+    Stock,
     Shipment,
-    Profile
+    Setting
 }
