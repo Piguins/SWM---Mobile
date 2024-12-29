@@ -1,5 +1,6 @@
 package com.han.swm.feature.updateprofile
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,6 +63,7 @@ private fun UpdateProfileScreen(
     onBack: () -> Unit,
     onUpdateUserInfo: (user: User) -> Unit
 ) {
+    val context = LocalContext.current
     var name by remember(user) { mutableStateOf(user.name) }
     var dob by remember(user) { mutableStateOf(user.dob) }
     var email by remember(user) { mutableStateOf(user.username) }
@@ -156,6 +159,11 @@ private fun UpdateProfileScreen(
                         phone = phone
                     )
                 )
+                Toast.makeText(
+                    context,
+                    "Thông tin đã được ghi nhận",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         ) {
             Text("Xác nhận")
